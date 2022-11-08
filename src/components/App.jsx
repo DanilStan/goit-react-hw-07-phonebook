@@ -5,6 +5,11 @@ import { fetchContacts } from 'redux/ContactList/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { selectorError, selectorIsLoading } from 'redux/selectors';
+import {
+  Section,
+  SectionTitlePrimary,
+  SectionTitleSecondary,
+} from './App.styled';
 
 export function App() {
   const dispatch = useDispatch();
@@ -16,14 +21,14 @@ export function App() {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>Phonebook</h1>
+    <Section>
+      <SectionTitlePrimary>Phonebook</SectionTitlePrimary>
       <Form />
 
-      <h2>Contacts</h2>
+      <SectionTitleSecondary>Contacts</SectionTitleSecondary>
       <Filter />
       {isLoading && !error && <b>Request in progress...</b>}
       <ContactsList />
-    </div>
+    </Section>
   );
 }
